@@ -39,7 +39,16 @@ export default function GetList() {
                 <p className="w-1/4">{file.filename}</p>
                 <p className="w-1/4">{file.size}</p>
                 <p className="w-1/4">{file.author}</p>
-                <a className="w-1/4 text-blue-500" href={`/api/download/${file.filename}`}>Here</a>
+                <button className="w-1/4 text-blue-500" 
+                    onClick = {async (file) => {
+                        try {
+                            const res = await axios.get(`/api/download?filename=${file.uuidName}`);
+                            console.log(res.data);
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }}
+                >Here</button>
             </div>
         )
     })
