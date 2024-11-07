@@ -6,13 +6,13 @@ import axios from "axios"
 
 export default function Upload() {
     const [file, setFile] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [author, setAuthor] = useState(null);
     const [descp, setDescp] = useState(null);
     const handleChange = (e) => {
         if (e.target.id === "file") {
             setFile(e.target.files[0]);
-        } else if (e.target.id === "email") {
-            setEmail(e.target.value);
+        } else if (e.target.id === "author") {
+            setAuthor(e.target.value);
         } else if (e.target.id === "descp") {
             setDescp(e.target.value);
         }
@@ -22,7 +22,7 @@ export default function Upload() {
         e.preventDefault();
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("email", email);
+        formData.append("author", author);
         formData.append("descp", descp);
         try {
             const res = await axios.post("/api/upload", formData, {
@@ -41,11 +41,11 @@ export default function Upload() {
         >
             <label
             className="block"
-            htmlFor="email">Enter Your Email</label>
+            htmlFor="author">Enter Your Name</label>
             <input
             onChange={handleChange}
             className="text-black border border-solid border-transparent rounded-md p-2"
-            type="email" id="email" name="email" required />
+            type="text" id="author" name="author" required />
             <label
             className="block"
             htmlFor="descp">Enter description</label>
