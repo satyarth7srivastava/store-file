@@ -13,6 +13,7 @@ export default function GetList() {
             try {
                 const res = await axios.get("/api/getlist");
                 setFilesmetadata(res.data);
+                console.log(res.data);
             } catch (error) {
                 console.log(error);
             }
