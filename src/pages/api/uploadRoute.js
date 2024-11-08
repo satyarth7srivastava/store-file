@@ -23,7 +23,7 @@ const storeDb = async (author, descp, file) => {
         descp: descp
     })
     await fileData.save();
-    console.log("File data saved to db");
+    // console.log("File data saved to db");
 }
 
 apiRoute.use(upload.single("file")).post((req, res) => {
@@ -31,7 +31,7 @@ apiRoute.use(upload.single("file")).post((req, res) => {
     if (!file) {
         return res.status(400).send("Please upload a file");
     }
-    console.log(file);
+    // console.log(file);
     const { author, descp } = req.body;
     storeDb(author, descp, file);
     res.status(200).json({ message: "File uploaded successfully", success:true });

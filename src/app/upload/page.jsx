@@ -8,6 +8,7 @@ export default function Upload() {
     const [file, setFile] = useState(null);
     const [author, setAuthor] = useState(null);
     const [descp, setDescp] = useState(null);
+    const [uploaded, setUploaded] = useState(false);
     const handleChange = (e) => {
         if (e.target.id === "file") {
             setFile(e.target.files[0]);
@@ -30,15 +31,34 @@ export default function Upload() {
                     "Content-Type": "multipart/form-data"
                 }
             });
-            console.log(res.data);
+            // console.log(res.data);
+            if(res.data.success) {
+                setUploaded(true);
+            }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
+
+    const uploadedPromt = () => {
+        return (
+            <div className="flex flex-col items-center justify-center gap-4">
+                <h1 className="text-2xl">File Uploaded Successfully</h1>
+                <button
+                    className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                    onClick={() => window.location.reload()}
+                >
+                    Upload Another
+                </button>
+            </div>
+        )
+    }
+
     return (
         <form 
         className="flex flex-col gap-4 items-center justify-center min-h-screen p-8 pb-20 font-[family-name:var(--font-geist-sans)]"
         >
+            {uploaded && uploadedPromt()}
             <label
             className="block"
             htmlFor="author">Enter Your Name</label>

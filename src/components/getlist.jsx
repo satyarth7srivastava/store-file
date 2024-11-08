@@ -14,9 +14,9 @@ export default function GetList() {
             try {
                 const res = await axios.get("/api/getlist");
                 setFilesmetadata(res.data);
-                console.log(res.data);
+                //console.log(res.data);
             } catch (error) {
-                console.log(error);
+                //console.log(error);
             }
         }
         fetchFiles();
@@ -32,7 +32,7 @@ export default function GetList() {
             const res = await axios.get(`/api/getlist?search=${searchURI}`);
             setFilesmetadata(res.data);
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
     }
     const filesList = filesmetadata.map((file, index) => {
@@ -47,7 +47,7 @@ export default function GetList() {
                     try {
                         const res = await axios.get(`/api/download?filename=${e.target.value}`);
                     } catch (error) {
-                        console.log(error);
+                        //console.log(error);
                     }
                 }}
                 >Here</button>
