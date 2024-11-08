@@ -2,6 +2,7 @@
 
 import axios from "axios"
 import { useState, useEffect } from "react"
+import Link from "next/link";
 
 
 
@@ -41,14 +42,14 @@ export default function GetList() {
                 <p className="w-1/4">{file.size}</p>
                 <p className="w-1/4">{file.author}</p>
                 <button className="w-1/4 text-blue-500" 
-                    onClick = {async (file) => {
-                        try {
-                            const res = await axios.get(`/api/download?filename=${file.uuidName}`);
-                            console.log(res.data);
-                        } catch (error) {
-                            console.log(error);
-                        }
-                    }}
+                value={file.uuidName}
+                onClick={ async (e) => {
+                    try {
+                        const res = await axios.get(`/api/download?filename=${e.target.value}`);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }}
                 >Here</button>
             </div>
         )
