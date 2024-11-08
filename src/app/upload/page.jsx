@@ -25,7 +25,7 @@ export default function Upload() {
         formData.append("author", author);
         formData.append("descp", descp);
         try {
-            const res = await axios.post("/api/upload", formData, {
+            const res = await axios.post("/api/uploadRoute", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
