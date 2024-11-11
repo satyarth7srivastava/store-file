@@ -1,6 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+For running it on local machine create a `.env` file in the root with `MONGO_URI` so that it can communicate with mongoDb database.
 
 First, run the development server:
 
