@@ -43,8 +43,10 @@ export default function GetList() {
     }
     const filesList = filesmetadata.map((file, index) => {
         return (
-            <div key={index} className="flex gap-4">
-                <p className="w-1/4">{file.filename}</p>
+            <div key={index} className="flex gap-4 w-full"
+            >
+                <p className="w-2/4 "
+                >{file.filename}</p>
                 <p className="w-1/4">{file.size}</p>
                 <p className="w-1/4">{file.author}</p>
                 <button className="w-1/4 text-blue-500" 
@@ -69,7 +71,7 @@ export default function GetList() {
 
     return (
         <div
-            className="flex flex-col justify-center items-center"
+            className="flex flex-col justify-center items-center min-w-full"
         >
             {/* search bar */}
             <div className="flex justify-center items-center">
@@ -80,11 +82,11 @@ export default function GetList() {
             </div>
             {/* list of files heading with file name file size author and download link*/}
             {noFiles && noFilesMessage}
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center min-w-full">
                 <h1 className="text-2xl font-bold">List of Files</h1>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 min-w-full">
                     <div className="flex gap-4">
-                        <p className="w-1/4">File Name</p>
+                        <p className="w-2/4">File Name</p>
                         <p className="w-1/4">File Size</p>
                         <p className="w-1/4">Author</p>
                         <p className="w-1/4">Download</p>

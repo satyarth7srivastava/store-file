@@ -3,6 +3,8 @@
 import { useState } from "react"
 import axios from "axios"
 
+import Warning from "@/components/warning";
+
 
 export default function Upload() {
     const [file, setFile] = useState(null);
@@ -63,6 +65,7 @@ export default function Upload() {
         <form 
         className="flex flex-col gap-4 items-center justify-center min-h-screen p-8 pb-20 font-[family-name:var(--font-geist-sans)]"
         >
+            <Warning />
             {uploaded && uploadedPromt()}
             <label
             className="block"
