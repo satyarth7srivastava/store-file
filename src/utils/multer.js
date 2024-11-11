@@ -11,6 +11,14 @@ const checkDirectory = (directory) => {
     }
 }
 
+//creating filter for images and pdf only files
+const filter = (req, file, cs) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'application/pdf') {
+        cs(null, true);
+    } else {
+        cs(new Error('Only .jpeg, .png and .pdf files are allowed'));
+    }
+}
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -21,6 +29,6 @@ const storage = multer.diskStorage({
         cb(null, uuidv4() + '-' + path.extname(file.originalname));
     }
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage, fileFilter: filter });
 
 export default upload;

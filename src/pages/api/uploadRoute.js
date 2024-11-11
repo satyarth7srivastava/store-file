@@ -33,8 +33,10 @@ apiRoute.use(upload.single("file")).post((req, res) => {
     }
     // console.log(file);
     const { author, descp } = req.body;
+    const { filename } = file;
+    const fileLink = `http://localhost:3000/api/download?filename=${filename}`;
     storeDb(author, descp, file);
-    res.status(200).json({ message: "File uploaded successfully", success:true });
+    res.status(200).json({ message: "File uploaded successfully", success:true, fileLink: fileLink });
 });
 
 

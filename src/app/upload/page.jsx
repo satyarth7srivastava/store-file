@@ -9,6 +9,7 @@ export default function Upload() {
     const [author, setAuthor] = useState(null);
     const [descp, setDescp] = useState(null);
     const [uploaded, setUploaded] = useState(false);
+    const [fileLink, setFileLink] = useState(null);
     const handleChange = (e) => {
         if (e.target.id === "file") {
             setFile(e.target.files[0]);
@@ -34,6 +35,7 @@ export default function Upload() {
             // console.log(res.data);
             if(res.data.success) {
                 setUploaded(true);
+                setFileLink(res.data.fileLink);
             }
         } catch (error) {
             // console.log(error);
@@ -50,6 +52,9 @@ export default function Upload() {
                 >
                     Upload Another
                 </button>
+                <p>
+                    Your unique download link is: {fileLink}
+                </p>
             </div>
         )
     }

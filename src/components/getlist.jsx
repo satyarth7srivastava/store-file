@@ -8,11 +8,17 @@ import Link from "next/link";
 
 export default function GetList() {
     const [filesmetadata, setFilesmetadata] = useState([]);
+    const [noFiles, setNoFiles] = useState(false);
     const [search, setSearch] = useState("");
     useEffect(() => {
         const fetchFiles = async () => {
             try {
                 const res = await axios.get("/api/getlist");
+                if (res.data.length === 0) {
+                    setNoFiles(true);
+                } else {
+                    setNoFiles(false);
+                }
                 setFilesmetadata(res.data);
                 //console.log(res.data);
             } catch (error) {
@@ -53,7 +59,14 @@ export default function GetList() {
                 >Here</button>
             </div>
         )
-    })
+    });
+
+    const noFilesMessage = (
+        <div>
+            <p>No files found</p>
+        </div>
+    )
+
     return (
         <div
             className="flex flex-col justify-center items-center"
@@ -66,6 +79,7 @@ export default function GetList() {
                 className="p-2 bg-blue-500 text-white rounded-md">Search</button>
             </div>
             {/* list of files heading with file name file size author and download link*/}
+            {noFiles && noFilesMessage}
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-2xl font-bold">List of Files</h1>
                 <div className="flex flex-col gap-4">
