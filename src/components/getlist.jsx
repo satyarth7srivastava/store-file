@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function GetList() {
     const [filesmetadata, setFilesmetadata] = useState([]);
-    const [noFiles, setNoFiles] = useState(false);
+    const [noFiles, setNoFiles] = useState(true);
     const [search, setSearch] = useState("");
     useEffect(() => {
         const fetchFiles = async () => {
